@@ -6,6 +6,7 @@ import App from './pages/App';
 import registerServiceWorker from './registerServiceWorker';
 
 render((
+         
   <BrowserRouter>
     <App />
   </BrowserRouter>
