@@ -1,46 +1,47 @@
-.App {
-  text-align: center;
-}
+
+   .App {
+     text-align: center;
+   }
 
 
-h1{
-  font-size: 50px;
-  margin-top:-10px;
-  margin-left: 42%;
-  position:absolute;
-}
+   h1{
+     font-size: 50px;
+     margin-top:10px;
+     margin-left: 26%;
+     position:absolute;
+   }
 
-mark {
-  display: inline-block;
-  line-height: 0em;
-  padding-bottom: 0.5em;
-  background-color:#F7FFA1;
-}
+   mark {
+     display: inline-block;
+     line-height: 0em;
+     padding-bottom: 0.5em;
+     background-color:#F7FFA1;
+   }
 
-ul{
-  list-style: none;
-  margin-left: -40px;
-}
+   ul{
+     list-style: none;
+     margin-left: -40px;
+   }
 
-.player{
-  width:100%;
-  margin-top:60px;
-}
+   .player{
+     width:100%;
+     margin-top:80px;
+   }
 
-h2{
-  width:90%;
-  margin-left:5%;
-  font-size:30px;
-}
+   h2{
+     width:90%;
+     margin-left:5%;
+     font-size:30px;
+   }
 
-.channel{
-  margin-left:5%;
-  margin-top:100px;
-  position:absolute;
-}
+   .channel{
+     margin-left:5%;
+     margin-top:100px;
+     position:absolute;
+   }
 
-.backButton{
-  width:80px;
-  position:absolute;
-  margin-top:-10px;
-}
+   .backButton{
+     width:80px;
+     position:absolute;
+     margin-top:5px;
+   }

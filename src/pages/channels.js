@@ -5,7 +5,8 @@ import "./channels.css";
 import firebase from "./firebase";
 import YouTube from 'react-youtube';
 import Header from "./components/header/header";
-import Player from "./components/player/player";
+import News from "./components/player/playerNews";
+import Entertainment from "./components/player/playerEntertainment";
 import Channels from "./components/channels/channels";
 
 
@@ -18,7 +19,8 @@ const BasicExample = () => (
     <Header/>
 
       <Route exact path="/" component={channelsWindow} />
-      <Route path="/player" component={playerWindow} />
+      <Route path="/news" component={newsWindow} />
+      <Route path="/entertainment" component={entertainmentWindow} />
     </div>
   </Router>
 );
@@ -30,11 +32,16 @@ const channelsWindow = () => (
   </div>
 );
 
-const playerWindow = () => (
+const newsWindow = () => (
   <div>
-<Player/>
+<News/>
   </div>
 );
 
+const entertainmentWindow = () => (
+  <div>
+<Entertainment/>
+  </div>
+);
 
 export default BasicExample;

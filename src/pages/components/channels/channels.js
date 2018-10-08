@@ -11,7 +11,8 @@ class App extends Component {
     this.state = {
       currentItem: "",
       username: "",
-      News: []
+      News: [],
+      Entertainment: []
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -24,6 +25,7 @@ class App extends Component {
     const NewsRef = firebase
       .database()
       .ref("News")
+      .orderByChild("date")
       .limitToLast(1);
     NewsRef.on("value", snapshot => {
       let News = snapshot.val();
@@ -38,6 +40,7 @@ class App extends Component {
           videoid: News[item].videoid
         });
       }
+
       this.setState({
         News: newState
       });
@@ -47,6 +50,9 @@ class App extends Component {
     const itemRef = firebase.database().ref(`/News/${itemId}`);
     itemRef.remove();
   }
+
+
+
   render() {
     const opts = {
           height: '390',
@@ -70,12 +76,14 @@ class App extends Component {
                     <h2><mark>News</mark></h2>
                     <h3>{item.title}.</h3>
                     <h4>Publisher: {item.channel}</h4>
-                    <Link to="/player"><button className="watch">Watch</button></Link>
+                    <Link to="/news"><button className="watch">Watch</button></Link>
                     </div>
 
                     <div className="entertainment">
-                    <h2>Coming Soon</h2>
-                    <h3>Since these are the beginning stages of Wave TV, we only have one channel so far.</h3>
+                    <h2><mark>Entertainment</mark></h2>
+                    <h3>{item.title}</h3>
+                    <h4>Publisher: {item.channel}</h4>
+                    <Link to="/entertainment"><button className="watch">Watch</button></Link>
                     </div>
                     </li>
                   );

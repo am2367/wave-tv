@@ -32,7 +32,7 @@ class App extends Component {
     const NewsRef = firebase
       .database()
       .ref('News')
-      .orderByChild('date');
+      .orderByChild("date")
     NewsRef.on("value", snapshot => {
       let News = snapshot.val();
       let newState = [];
@@ -82,7 +82,7 @@ class App extends Component {
         <Link to="/"><img src={Back} className="backButton"/></Link>
         <h1><mark>News</mark></h1>
           <section className="display-item">
-            {currentVideo && 
+            {currentVideo &&
               <div className="wrapper">
                 <YouTube
                   className="player"
