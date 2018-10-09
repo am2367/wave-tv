@@ -27,6 +27,11 @@ class App extends Component {
       .ref("News")
       .orderByChild("date")
       .limitToLast(1);
+    const EntertainmentRef = firebase
+          .database()
+          .ref("Entertainment")
+          .orderByChild("date")
+          .limitToLast(1);
     NewsRef.on("value", snapshot => {
       let News = snapshot.val();
       let newState = [];
@@ -43,6 +48,24 @@ class App extends Component {
 
       this.setState({
         News: newState
+      });
+    });
+    EntertainmentRef.on("value", snapshot => {
+      let Entertainment = snapshot.val();
+      let newState = [];
+      for (let item in Entertainment) {
+        newState.push({
+          id: item,
+          title: Entertainment[item].title,
+          channel: Entertainment[item].channel,
+          embed: Entertainment[item].embed,
+          date: Entertainment[item].date,
+          videoid: Entertainment[item].videoid
+        });
+      }
+
+      this.setState({
+        Entertainment: newState
       });
     });
   }
@@ -69,22 +92,27 @@ class App extends Component {
     return (
       <div className="app">
               <ul>
-                {this.state.News.map(item => {
+                {this.state.News.map(item => { 
                   return (
                     <li key={item.id}>
-                    <div className="news">
-                    <h2><mark>News</mark></h2>
-                    <h3>{item.title}.</h3>
-                    <h4>Publisher: {item.channel}</h4>
-                    <Link to="/news"><button className="watch">Watch</button></Link>
-                    </div>
-
-                    <div className="entertainment">
-                    <h2><mark>Entertainment</mark></h2>
-                    <h3>{item.title}</h3>
-                    <h4>Publisher: {item.channel}</h4>
-                    <Link to="/entertainment"><button className="watch">Watch</button></Link>
-                    </div>
+                      <div className="news">
+                      <h2><mark>News</mark></h2>
+                      <h3>{item.title}.</h3>
+                      <h4>Publisher: {item.channel}</h4>
+                      <Link to="/news"><button className="watch">Watch</button></Link>
+                      </div>
+                    </li>
+                  );
+                })}
+                {this.state.Entertainment.map(item => {
+                  return (
+                    <li key={item.id}>
+                      <div className="entertainment">
+                      <h2><mark>Entertainment</mark></h2>
+                      <h3>{item.title}</h3>
+                      <h4>Publisher: {item.channel}</h4>
+                      <Link to="/entertainment"><button className="watch">Watch</button></Link>
+                      </div>
                     </li>
                   );
                 })}
